@@ -12,6 +12,15 @@ package com.georgidinov;
 
 import java.util.Objects;
 
+
+/**
+ * The class represents plausible song artist and author
+ * Has fields for name, age and song
+ * can be extended to hold list of songs, or album object holding songs
+ * Two chained constructors, for testing purposes
+ * the No Args constructor will default to the group metallica and the default song object
+ * (which is metallica song for now)
+ */
 public class Author {
 
     //== fields ==
@@ -40,32 +49,45 @@ public class Author {
 
 
     //== public methods ==
-
-    //returns string containing data for the name and age of the author
+    /**
+     * @return String containing details for the author like name, age etc.
+     */
     public String getAuthorDetails() {
         return String.format("Author: %s Age: %d", this.name, this.age);
-        //return "Author: " + this.name + " Age: " + this.age;
     }
 
-    //returns string containing the author song name and the author name and age
+    /**
+     * @return String containing the song tittle and the author details
+     */
     public String getSongTitleAndAuthorDetails() {
         return "Song: " + this.song.getTitle() + " by " + this.getAuthorDetails();
     }
 
-    //getter for the Song field
+    /**
+     * @return reference to the Song object
+     */
     public Song getSong() {
         return this.song;
     }
 
 
-    //== private methods ==
 
-    //checks for valid age range
+    //== private methods ==
+    /**
+     * @param age integer
+     * @return true if age is in valid range
+     */
     private boolean isValidAge(int age) {
         return age >= 0 && age <= 100;
     }
 
     //checks the Song object in this case only if it's not null, may be extended as needed
+
+    /**
+     * @param song
+     * @return true if song is not null
+     * can be extended with further logic
+     */
     private boolean isValidSong(Song song) {
         return song != null;
     }

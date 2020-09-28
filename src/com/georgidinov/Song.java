@@ -13,6 +13,14 @@ package com.georgidinov;
 
 import java.util.Objects;
 
+/**
+ * The class represents a plausible song and has fields for
+ * title, duration(timing), genre and lyrics
+ * There are two chained constructors for the ease of development
+ * and according to one of the specifications(default initialization in constructor)
+ * if No Args constructor is called the Song object will be initialized as one of
+ * Metallica songs from the black album
+ */
 public class Song {
 
     //== fields ==
@@ -40,8 +48,9 @@ public class Song {
 
 
     //== public methods ==
-
-    //auto generated toString method for the Song object details
+    /**
+     * @return Song object details
+     */
     @Override
     public String toString() {
         return "Song{" +
@@ -52,7 +61,11 @@ public class Song {
                 '}';
     }
 
-    //checks for string equality ignoring the case
+    /**
+     * @param genre String parameter for comparison
+     * @return true if the comparing string is equal to the
+     * genre parameter ignoring the case
+     */
     public boolean isTheSongGenreSameAs(String genre) {
         if (this.isValidGenre(genre)) {
             return this.genre.equalsIgnoreCase(genre);
@@ -60,31 +73,44 @@ public class Song {
         return false;
     }
 
-    //returns the song object duration formatted with 2 digits after the floating point
+    /**
+     * @return song object duration formatted with 2 digits after the floating point
+     */
     public String getSongTimingString() {
         return String.format("%.2f", this.timing);
     }
 
-    //getter for the lyrics field
+    /**
+     * @return the song object lyrics field
+     */
     public String getSongLyrics() {
         return this.lyrics;
     }
 
-    //== getter for the tittle field
+    /**
+     * @return the song object tittle field
+     */
     public String getTitle() {
         return title;
     }
 
+
     //== private methods ==
-    //checks for the song duration to be grater than 0
+    /**
+     * @param timing
+     * @return true if timing is greater than zero
+     */
     private boolean isValidTiming(double timing) {
-        return timing > 0d;
+        return timing > 0.0d;
     }
 
-    //checks if the passed parameter is not null , empty or blank
+    /**
+     * @param genre is a String on which will perform checks
+     * @return true if the parameter is not null, blank, or empty
+     */
     private boolean isValidGenre(String genre) {
         return genre != null && !genre.isBlank();
-//        return genre!=null&&!genre.isEmpty(); if not compatible with java version
+        //return genre != null && !genre.isEmpty(); // if java version < 11
     }
 
 }//end of class Song
