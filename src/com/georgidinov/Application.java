@@ -43,6 +43,17 @@ public class Application {
         System.out.println("Author Details: " + author.getAuthorDetails());
         System.out.println("Song Title And Author Details: " + author.getSongTitleAndAuthorDetails());
 
+//        System.out.println("\n\t\t\t<<<AnotherSong Test For FileFetcher Lyrics File Loading>>>");
+//        String fileName = "sadbuttrue.txt";
+//        Path path = FileSystems.getDefault().getPath(fileName);
+//        Song anotherSong = null;
+//        if (Files.exists(path)) {
+//            anotherSong = new Song("Sad But True", "metal", 6.36d, TextFileFetcher.getInstance().getFileText(path));
+//        }
+//        if (anotherSong != null) {
+//            System.out.println(anotherSong.getSongLyrics());
+//        }
+
     }//end of main method
 
 }//end of class Application

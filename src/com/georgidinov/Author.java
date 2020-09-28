@@ -40,24 +40,32 @@ public class Author {
 
 
     //== public methods ==
+
+    //returns string containing data for the name and age of the author
     public String getAuthorDetails() {
-        return "Author: " + this.name + " Age: " + this.age;
+        return String.format("Author: %s Age: %d", this.name, this.age);
+        //return "Author: " + this.name + " Age: " + this.age;
     }
 
+    //returns string containing the author song name and the author name and age
     public String getSongTitleAndAuthorDetails() {
         return "Song: " + this.song.getTitle() + " by " + this.getAuthorDetails();
     }
 
+    //getter for the Song field
     public Song getSong() {
         return this.song;
     }
 
 
     //== private methods ==
+
+    //checks for valid age range
     private boolean isValidAge(int age) {
         return age >= 0 && age <= 100;
     }
 
+    //checks the Song object in this case only if it's not null, may be extended as needed
     private boolean isValidSong(Song song) {
         return song != null;
     }
