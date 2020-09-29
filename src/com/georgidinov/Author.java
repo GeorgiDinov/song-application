@@ -25,11 +25,7 @@ public class Author {
 
     public Author(String name, int age, Song song) {
         this.name = Objects.requireNonNull(name, "DefaultName");
-        if (this.isValidAge(age)) {
-            this.age = age;
-        } else {
-            this.age = -1;
-        }
+        this.age = this.ageValidator(age);
         if (this.isValidSong(song)) {
             this.song = song;
         } else {
@@ -66,6 +62,19 @@ public class Author {
      */
     private boolean isValidAge(int age) {
         return age >= 0 && age <= 100;
+    }
+
+
+    /**
+     * @param age integer value for age field to be tested
+     * @return the passed parameter if valid
+     * @throws IllegalArgumentException if age not in range
+     */
+    private int ageValidator(int age) {
+        if (this.isValidAge(age)) {
+            return age;
+        }
+        throw new IllegalArgumentException("Age is not in valid range!");
     }
 
     /**
