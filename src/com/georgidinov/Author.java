@@ -1,14 +1,5 @@
 package com.georgidinov;
 
-//        2. Създайте клас `Author`. Създайте няколко член-променливи,
-//        като прецените сами какъв тип трябва да бъдат
-//        -	`name` - името на изпълнителя
-//        -	`age` - възраст на изпълнителя
-//        -	`song` - песента на изпълнителя
-//        Напишете метод, който да извежда в конзолата форматирано
-//        името на автора и неговата възраст.
-//        Напишете метод, който да извежда в конзолата форматирано
-//        заглавието на песента и автора.
 
 import java.util.Objects;
 
@@ -23,32 +14,26 @@ import java.util.Objects;
  */
 public class Author {
 
-    //== fields ==
     private String name;
     private int age;
     private Song song;
 
-    //== constructors ==
+
     public Author() {
         this("Metallica", 38, new Song());
-    }//end of constructor
+    }
 
     public Author(String name, int age, Song song) {
         this.name = Objects.requireNonNull(name, "DefaultName");
-        if (this.isValidAge(age)) {
-            this.age = age;
-        } else {
-            this.age = -1;
-        }
+        this.age = this.ageValidator(age);
         if (this.isValidSong(song)) {
             this.song = song;
         } else {
             this.song = new Song();
         }
-    }//end of constructor
+    }
 
 
-    //== public methods ==
     /**
      * @return String containing details for the author like name, age etc.
      */
@@ -60,7 +45,7 @@ public class Author {
      * @return String containing the song tittle and the author details
      */
     public String getSongTitleAndAuthorDetails() {
-        return "Song: " + this.song.getTitle() + " by " + this.getAuthorDetails();
+        return String.format("Song title: %s by %s", this.song.getTitle(), this.getAuthorDetails());
     }
 
     /**
@@ -71,8 +56,6 @@ public class Author {
     }
 
 
-
-    //== private methods ==
     /**
      * @param age integer
      * @return true if age is in valid range
@@ -81,7 +64,18 @@ public class Author {
         return age >= 0 && age <= 100;
     }
 
-    //checks the Song object in this case only if it's not null, may be extended as needed
+
+    /**
+     * @param age integer value for age field to be tested
+     * @return the passed parameter if valid
+     * @throws IllegalArgumentException if age not in range
+     */
+    private int ageValidator(int age) {
+        if (this.isValidAge(age)) {
+            return age;
+        }
+        throw new IllegalArgumentException("Age is not in valid range!");
+    }
 
     /**
      * @param song
@@ -92,4 +86,4 @@ public class Author {
         return song != null;
     }
 
-}//end of class Author
+}

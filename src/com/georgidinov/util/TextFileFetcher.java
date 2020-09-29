@@ -10,20 +10,17 @@ import java.util.Scanner;
  */
 public final class TextFileFetcher {
 
-    //== constructors ==
     private TextFileFetcher() {
-    }//end of constructor
+    }
 
 
-    //== helper inner class ==
     private static class TextFileFetcherHelper {
-        private static final TextFileFetcher instance = new TextFileFetcher();
-    }//end of helper class
+        private static final TextFileFetcher INSTANCE = new TextFileFetcher();
+    }
 
 
-    //== public methods ==
     public static TextFileFetcher getInstance() {
-        return TextFileFetcherHelper.instance;
+        return TextFileFetcherHelper.INSTANCE;
     }
 
     public String getFileText(Path path) {
