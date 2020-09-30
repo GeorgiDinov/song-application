@@ -14,7 +14,8 @@ public class Application {
         Song song = author.getSong();
         String genreMetal = "metal";
         String genrePop = "pop";
-
+        System.out.print("Song object print = "+song);
+        System.out.println();
         System.out.println("\t\t\t<<<Song Methods Test Output>>>");
         System.out.println(song.getSongDetails());
         System.out.println("The song genre is metal = " + song.isTheSongGenreSameAs(genreMetal));
